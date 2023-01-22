@@ -1,0 +1,58 @@
+students_ID = []
+students_name = []
+
+
+def show_list():
+    print("-----------------------------------------------")
+    print("1. Show the list of students\n2. Insert a new student\n3. Delete sudent\n4. Exit")
+    n = int(input("Please select your desired option: "))
+    print("-----------------------------------------------")
+    return n
+
+
+def show_students():
+    print("ID", "\t", "Name")
+    if len(students_ID) == 0:
+        print("list is EMPTY")
+    else:
+        index = 0
+        while index < len(students_ID):
+            print(students_ID[index], "\t", students_name[index])
+            index += 1
+
+
+def insert_student():
+    students_ID.append(int(input("Student ID: ")))
+    students_name.append(input("Student name: "))
+    print("Your student inserted perfectly")
+
+
+def delete_student():
+    delete = 0
+    id = int(input("Sudent ID: "))
+    index = 0
+    while index < len(students_ID):
+        if id == students_ID[index]:
+            del (students_ID[index])
+            del (students_name[index])
+            print("Successfully deleted")
+            delete = 1
+        index += 1
+    if delete == 0:
+        print("Not Found")
+
+
+n = show_list()
+while True:
+    if n == 1:
+        show_students()
+    elif n == 2:
+        insert_student()
+    elif n == 3:
+        delete_student()
+    elif n == 4:
+        print("Program ended")
+        exit()
+    else:
+        print("Wrong input, try again")
+    n = show_list()
